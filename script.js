@@ -133,9 +133,15 @@ async function runGreedy() {
     const finish = document.getElementById('finish').value;
     const bensin_awal = parseInt(document.getElementById('bensin_awal').value);
 
+    const startTime = performance.now();
     const result = await greedyHematBensinWithDensity(graph, start, finish, bensin_awal);
+    const endTime = performance.now();
+    const executionTime = ((endTime - startTime)/1000).toFixed(2);
 
-    document.getElementById('result').innerHTML = `Greedy Path: ${result.path} <br> Sisa Bensin: ${result.remainingFuel} <br> Bensin yang Terpakai: ${result.fuelUsed}`;
+    document.getElementById('result').innerHTML = `Greedy Path: ${result.path} <br> 
+                                                   Sisa Bensin: ${result.remainingFuel} <br> 
+                                                   Bensin yang Terpakai: ${result.fuelUsed} <br> 
+                                                   Execution Time: ${executionTime} s`;
     visualizePath(result.path);
 }
 
@@ -144,9 +150,15 @@ async function runBruteForce() {
     const finish = document.getElementById('finish').value;
     const bensin_awal = parseInt(document.getElementById('bensin_awal').value);
 
+    const startTime = performance.now();
     const result = await bruteForceHematBensinWithDensity(graph, start, finish, bensin_awal);
+    const endTime = performance.now();
+    const executionTime = ((endTime - startTime)/1000).toFixed(2);
 
-    document.getElementById('result').innerHTML = `Brute Force Path: ${result.path} <br> Sisa Bensin: ${result.remainingFuel} <br> Bensin yang Terpakai: ${result.fuelUsed}`;
+    document.getElementById('result').innerHTML = `Brute Force Path: ${result.path} <br> 
+                                                   Sisa Bensin: ${result.remainingFuel} <br> 
+                                                   Bensin yang Terpakai: ${result.fuelUsed} <br> 
+                                                   Execution Time: ${executionTime} s`;
     visualizePath(result.path);
 }
 
